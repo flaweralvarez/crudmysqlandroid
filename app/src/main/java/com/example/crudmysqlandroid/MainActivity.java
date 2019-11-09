@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     boolean inputEd=false;
     boolean input1=false;
     int resultadoInsert=0;
-
+    final Context context = this;
     String senal = "";
     String codigo = "";
     String descripcion = "";
@@ -333,6 +333,28 @@ public class MainActivity extends AppCompatActivity {
         }else if(id == R.id.action_salir){
             DialogConfirmacion();
             return true;
+        }
+
+        //Acerca de..
+        if (id == R.id.mAcerca){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    context);
+            // Establecer el título
+            alertDialogBuilder.setTitle("Proyecto creado Por");
+            // Establecer mensaje de diálogo
+            alertDialogBuilder
+                    .setMessage("flawer \nSis 21B")
+                    .setCancelable(false)
+                    .setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Si presiona que Aceptar se cerrara el mensaje de dialogo
+                            dialog.cancel();
+                        }
+                    });
+            // Crear mensaje AlertDialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            // Mostrar alert
+            alertDialog.show();
         }
 
         return super.onOptionsItemSelected(item);
